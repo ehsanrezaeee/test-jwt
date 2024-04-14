@@ -1,6 +1,21 @@
 import Image from "next/image";
+import jwt from "jsonwebtoken";
+import Cookies from "js-cookie";
+
+interface token {
+  exp: number;
+  iat: number;
+  nbf: number;
+  sub: string;
+  token_uuid: string;
+}
 
 export default function Home() {
+  const accToken =
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0OWM2YWRiOC05NzY3LTRmMTYtODM2NC0xNTNkYmEzMGY0NjEiLCJleHAiOjE3MTMwODc2NTQsImlhdCI6MTcxMzA4NzM1NCwianRpIjoiYTFkOWE1ZjctZWRkOC00NjhiLThlOGQtNTQ5NjdjMDU4ZjAzIn0.QU0OeQmGv9vqbJ1B7fTJGQAQqiC-Hr-uBk1m6zPOvBiwBP9klUXXgF9kQ4lJY4mqoXgkj7zyU6PdwMM3kXMGYnS0tb5-YQhfh7jwL1ZLyTkvvkscQ1CnbZuVSNUuLdVYS_TCv6f7uCuHWokunqguxjbBHEU5PREzet7Y7L0zAvHCFl55E1-F9msMmHDhRfz_LqVM1MhBnZv-iLrrSGerJjb9b7QkicI8mddYAZfEVTyB2JESGoB2_S2a9Z_Wq1_LdiOOb_212CkNYH-M9tgC_42_MZUF4ENZrdsjLwnULWMWRw-1COvD6ecSZa8SR1vcCs3y49lA3xgl68LCVxfsRg";
+  const decodedAcc = jwt.decode(accToken) as token;
+  console.log(decodedAcc);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
